@@ -1,11 +1,14 @@
 //
 
 const express = require("express");
-const { tables } = require("../controllers/tableController");
+const { getAllTable, createTable } = require("../controllers/tableController");
 const auth = require("../middleware/auth");
 
 const tableRoutes = express.Router();
 
-tableRoutes.post("/table", auth, tables);
+tableRoutes.post("/create-table", auth, createTable);
+
+//get all table with qr
+tableRoutes.get("/get-all-table", auth, getAllTable);
 
 module.exports = tableRoutes;
