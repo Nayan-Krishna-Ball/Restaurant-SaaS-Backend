@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
+
+// Import routes
 const authRoutes = require("./routes/authRoutes");
 const tableRoutes = require("./routes/tableRoutes");
 const menuRoutes = require("./routes/menuRoutes");
@@ -20,7 +22,7 @@ app.use(helmet());
 
 app.use("/api/auth", authRoutes);
 
-app.use("/api/tables", tableRoutes);
+app.use("/api/table", tableRoutes);
 
 app.use("/api/items", categoryRoutes);
 app.use("/api/items", menuRoutes);

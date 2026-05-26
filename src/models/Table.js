@@ -18,6 +18,9 @@ const tableSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
+    qrImage: {
+      type: String,
+    },
 
     active: {
       type: Boolean,

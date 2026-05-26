@@ -65,6 +65,7 @@ const getOrders = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "All Orders fetched successfully",
       count: orders.length,
       orders,
     });
@@ -100,7 +101,9 @@ const updateStatus = async (req, res) => {
     const order = await Order.findByIdAndUpdate(
       req.params.id,
       { status },
-      { new: true },
+      {
+        returnDocument: "after",
+      },
     ).populate("items.menuItemId");
 
     if (!order) {
@@ -138,6 +141,7 @@ const getOrderById = async (req, res) => {
 
     res.json({
       success: true,
+      message: "Single Order fetched successfully",
       order,
     });
   } catch (error) {
