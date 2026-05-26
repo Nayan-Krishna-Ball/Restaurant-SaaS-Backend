@@ -87,8 +87,28 @@ const paymentFail = async (req, res) => {
   res.redirect(`${process.env.FRONTEND_URL}/payment-failed`);
 };
 
+//payment with cash
+const paymentWithCash = async (req, res) => {
+  try {
+    // const orderId = req.body.tran_id;
+    const orderId = req.params.tranId;
+
+    await Order.findByIdAndUpdate(orderId, {
+      paymentStatus: "PAY_WITH_CASH ",
+    });
+
+    //This is for dummy, it will redirect the paywith cash success page
+    res.redirect(`${process.env.FRONTEND_URL}/payment-success/${orderId}`);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   sslPayment,
   paymentSuccess,
   paymentFail,
+  paymentWithCash,
 };
