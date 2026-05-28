@@ -14,6 +14,6 @@ paymentRoutes.post("/fail", paymentFail);
 paymentRoutes.post("/cancel", paymentFail);
 
 //pay with cash
-paymentRoutes.post("/cash-payment/:tranId", paymentWithCash);
+paymentRoutes.patch("/cash-payment/:tranId", paymentWithCash);
 
 module.exports = paymentRoutes;
