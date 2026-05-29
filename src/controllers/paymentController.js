@@ -98,7 +98,10 @@ const paymentWithCash = async (req, res) => {
     });
 
     //This is for dummy, it will redirect the paywith cash success page
-    res.redirect(`${process.env.FRONTEND_URL}/payment-success/${orderId}`);
+    return res.status(200).json({
+      success: true,
+      orderId,
+    });
   } catch (error) {
     res.status(500).json({
       message: error.message,
